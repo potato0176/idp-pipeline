@@ -1,0 +1,15 @@
+[project]
+name = "idp-pipeline"
+version = "1.0.0"
+description = "Intelligent Document Processing Pipeline API with Docling, EasyOCR, and VLM"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100

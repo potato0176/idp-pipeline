@@ -1,0 +1,45 @@
+# Default configuration for IDP Pipeline
+# These values can be overridden by environment variables
+
+pipeline:
+  # Maximum concurrent tasks
+  max_concurrent_tasks: 5
+  # Auto-cleanup completed tasks after N minutes
+  task_ttl_minutes: 60
+
+docling:
+  # PDF parsing timeout in seconds
+  timeout: 300
+
+ocr:
+  languages:
+    - ch_tra
+    - en
+  # Confidence threshold — blocks below this are flagged for VLM review
+  confidence_threshold: 0.7
+
+vlm:
+  model: gemma3:27b
+  temperature: 0.1
+  max_tokens: 4096
+  # Retry configuration
+  max_retries: 2
+  retry_delay_seconds: 3
+
+chunking:
+  chunk_size: 512
+  chunk_overlap: 50
+  # Separators for RecursiveCharacterTextSplitter
+  separators:
+    - "\n\n"
+    - "\n"
+    - "。"
+    - "."
+    - " "
+    - ""
+
+vector_store:
+  collection_name: idp_documents
+  embedding_model: all-MiniLM-L6-v2
+  # Distance metric: l2, ip, cosine
+  distance_metric: cosine
