@@ -5,6 +5,15 @@ BASE = "http://localhost:8000"
 
 # 加大 timeout
 client = httpx.Client(timeout=120.0)
+'''
+# 上傳檔案
+with open("test_doc.pdf", "rb") as f:  # 替換成你的檔案名稱
+    resp = httpx.post(
+        f"{BASE}/api/v1/process",
+        files={"file": ("test_doc.pdf", f, "application/pdf")},
+        data={"output_format": "markdown", "enable_vlm": "true"},
+    )
+'''
 
 # 上傳圖片
 with open("scan.png", "rb") as f:
